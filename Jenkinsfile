@@ -29,7 +29,8 @@ pipeline {
             }
         }
    
-        deploy adapters: [tomcat9(credentialsId: 'd2bfc4da-dc97-4fc4-b3c2-4815405b2cee', path: '', url: 'http://localhost:8081/')], contextPath: '/api/hello', war: '**/demoHelloSpring-0.0.1-SNAPSHOT.wa'
+        deploy adapters: [tomcat9(credentialsId: 'd2bfc4da-dc97-4fc4-b3c2-4815405b2cee', path: '', url: 'http://localhost:8081/')], 
+            contextPath: '/api/hello', war: '**/demoHelloSpring-0.0.1-SNAPSHOT.war'
        
        
     }
