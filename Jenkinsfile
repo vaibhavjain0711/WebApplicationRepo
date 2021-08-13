@@ -6,18 +6,18 @@ pipeline {
     stages {
         stage('Checking Version') {
             steps {
-                bat 'java -version'
+                sh 'java -version'
             }
         }
         stage('build') {
             steps {
-                bat 'mvn clean package'
+                sh 'mvn clean package'
             }
         }
         
         stage('deploying') {
             steps {
-                bat 'deploying process PENDING'
+                sh 'deploying process PENDING'
             }
         }
     }
