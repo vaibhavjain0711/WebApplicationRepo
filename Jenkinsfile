@@ -7,25 +7,31 @@ pipeline {
         
          stage('java version') {
             steps {
-                sh 'java -version'
+                bat 'java -version'
             }
         }
         
          stage('maven version') {
             steps {
-                sh 'mvn --version'
+                bat 'mvn -version'
             }
         }
        
-        stage('build') {
+        stage('build clean') {
             steps {
                 sh 'mvn clean package'
+            }
+        }
+        
+         stage('build package') {
+            steps {
+                sh 'mvn package'
             }
         }
    
          stage('deploying') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: '661e4c32-971a-4dea-a8a0-29a48623eb7f', path: '', url: 'http://13.234.186.165:8080/')],
+                deploy adapters: [tomcat9(credentialsId: '661e4c32-971a-4dea-a8a0-29a48623eb7f', path: '', url: 'http://localhost:8081/')],
                     contextPath: 'api/hello', onFailure: false, war: '**/demoHelloSpring-0.0.1-SNAPSHOT.war'
             }
         }
