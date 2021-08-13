@@ -4,10 +4,22 @@ pipeline {
     agent any
     
     stages {
+        
+         stage('java version') {
+            steps {
+                sh 'java -version'
+            }
+        }
+        
+         stage('maven version') {
+            steps {
+                sh 'mvn --version'
+            }
+        }
        
         stage('build') {
             steps {
-                echo 'mvn clean package'
+                sh 'mvn clean package'
             }
         }
         
