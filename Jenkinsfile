@@ -17,18 +17,12 @@ pipeline {
             }
         }
        
-        stage('build clean') {
+        stage('build') {
             steps {
-                sh 'mvn clean'
+                sh 'mvn clean package'
             }
         }
-        
-        stage('build package') {
-            steps {
-                sh 'mvn package'
-            }
-        }
-        
+   
          stage('deploying') {
             steps {
                 deploy adapters: [tomcat9(credentialsId: '661e4c32-971a-4dea-a8a0-29a48623eb7f', path: '', url: 'http://13.234.186.165:8080/')],
